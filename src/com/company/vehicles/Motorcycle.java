@@ -1,29 +1,26 @@
 package com.company.vehicles;
 
-public class Motorcycle {
+public class Motorcycle extends Vehicle{
+
+
     public static enum Gearbox {
         MANUAL,
         AUTOMATIC
     }
 
-    private double maxSpeed;
     private String weight;
     private double displacement; //cilindrada
     private Gearbox gearbox;
 
-    public Motorcycle(double maxSpeed, String weight, double displacement, Gearbox gearbox) {
-        this.maxSpeed = maxSpeed;
+    public Motorcycle() {
+        super();
+    }
+
+    public Motorcycle(double maxSpeed, String enrollment, String color, String mark, String weight, double displacement, Gearbox gearbox) {
+        super(maxSpeed, enrollment, color, mark);
         this.weight = weight;
         this.displacement = displacement;
         this.gearbox = gearbox;
-    }
-
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(double maxSpeed) {
-        this.maxSpeed = maxSpeed;
     }
 
     public String getWeight() {
@@ -50,5 +47,16 @@ public class Motorcycle {
         this.gearbox = gearbox;
     }
 
-
+    @Override
+    public String toString() {
+        return "Motorcycle{" +
+                "weight='" + weight + '\'' +
+                ", displacement=" + displacement +
+                ", gearbox=" + gearbox +
+                ", maxSpeed=" + maxSpeed +
+                ", enrollment='" + enrollment + '\'' +
+                ", color='" + color + '\'' +
+                ", mark='" + mark + '\'' +
+                '}';
+    }
 }

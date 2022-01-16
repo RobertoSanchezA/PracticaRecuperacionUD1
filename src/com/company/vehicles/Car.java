@@ -1,22 +1,18 @@
 package com.company.vehicles;
 
-public class Car {
-    private double maxSpeed;
+public class Car extends Vehicle{
+
     private int numOfWheels;
     private String fuelType;
 
-    public Car(double maxSpeed, int numOfWheels, String fuelType) {
-        this.maxSpeed = maxSpeed;
+    public Car(double maxSpeed, String enrollment, String color, String mark, int numOfWheels, String fuelType) {
+        super(maxSpeed, enrollment, color, mark);
         this.numOfWheels = numOfWheels;
         this.fuelType = fuelType;
     }
 
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(double maxSpeed) {
-        this.maxSpeed = maxSpeed;
+    public Car() {
+        super();
     }
 
     public int getNumOfWheels() {
@@ -33,5 +29,17 @@ public class Car {
 
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "numOfWheels=" + numOfWheels +
+                ", fuelType='" + fuelType + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", enrollment='" + enrollment + '\'' +
+                ", color='" + color + '\'' +
+                ", mark='" + mark + '\'' +
+                '}';
     }
 }
