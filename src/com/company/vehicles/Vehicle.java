@@ -1,5 +1,7 @@
 package com.company.vehicles;
 
+import java.util.Arrays;
+
 public class Vehicle {
 
     protected double maxSpeed;
@@ -16,7 +18,9 @@ public class Vehicle {
             "Peugeot",
             "Aston Martin"
     };
-
+    private final String [] enrollmentLetters = {
+            "A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+    };
     private final String [] colors = {
             "Azul",
             "Amarillo",
@@ -48,32 +52,12 @@ public class Vehicle {
         return maxSpeed;
     }
 
-    public void setMaxSpeed(double maxSpeed) {
-        this.maxSpeed = maxSpeed;
-    }
-
-    public String getEnrollment() {
-        return enrollment;
-    }
-
-    public void setEnrollment(String enrollment) {
-        this.enrollment = enrollment;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public String getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
+    public String getEnrollment() {
+        return enrollment;
     }
 
     public double generateRandomMaxSpeed(){
@@ -82,11 +66,11 @@ public class Vehicle {
 
     public String generateRandomEnrollment() {
         String matricula = "";
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < 6; i++){
             if(i < 5) {
-                matricula += Math.random() * 10;
+                matricula += (int)(Math.random() * 10);
             } else {
-                matricula += (char)(Math.random() * 91 + 65);
+                matricula += enrollmentLetters[(int)(Math.random() * enrollmentLetters.length)];
             }
         }
         return matricula;
@@ -102,5 +86,11 @@ public class Vehicle {
         return marks[randomPosition];
     }
 
-
+    @Override
+    public String toString() {
+        return "VelocidadMaxima= " + (String.format("%.2f", maxSpeed)) + "\n" +
+                "Matricula= '" + enrollment + "\n" +
+                "color= '" + color + "\n" +
+                "Marca= '" + mark ;
+    }
 }

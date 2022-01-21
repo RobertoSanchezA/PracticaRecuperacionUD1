@@ -13,7 +13,24 @@ public class Boat extends Vehicle {
     private double length;
     private double width;
 
-
+    private final String [] boatNames = {
+            "Aguamarina",
+            "Alba",
+            "Calypso",
+            "La Perla Negra",
+            "Simon Peel",
+            "Ultramar",
+            "Zafiro",
+            "Java",
+            "Canterbury",
+            "Rosinante",
+            "Pelicano",
+            "Adventure",
+            "Fortune",
+            "Al Borany",
+            "Ranger",
+            "Fancy"
+    };
 
     public Boat(double maxSpeed, String enrollment, String color, String mark, String name, double length, double width) {
         super(maxSpeed, enrollment, color, mark);
@@ -24,42 +41,29 @@ public class Boat extends Vehicle {
 
     public Boat() {
         super();
+        this.name = generateRandomName();
+        this.length = generateRandomLength();
+        this.width = generateRandomWidth();
     }
 
-    public String getName() {
-        return name;
+    public String generateRandomName(){
+        return boatNames[(int)(Math.random()* boatNames.length)];
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public double generateRandomLength(){
+        return Math.random() * 300;
     }
 
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
+    public double generateRandomWidth(){
+        return (Math.random() + 1000) * 5000;
     }
 
     @Override
     public String toString() {
-        return "Boat{" +
-                "name='" + name + '\'' +
-                ", length=" + length +
-                ", width=" + width +
-                ", maxSpeed=" + maxSpeed +
-                ", enrollment='" + enrollment + '\'' +
-                ", color='" + color + '\'' +
-                ", mark='" + mark + '\'' +
-                '}';
+        return "Boat" +
+                "nombre = '" + name + "\n" +
+                "Eslora= " + (String.format("%.2f", length)) + "\n" +
+                "Manga= " + (String.format("%.2f", width)) +"\n" +
+                super.toString();
     }
 }

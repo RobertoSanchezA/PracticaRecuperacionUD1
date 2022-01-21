@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class FairManager {
-    private ArrayList<Space> spaces;
+    private final ArrayList<Space> spaces;
+
     public FairManager(int numSpaces, int numVehicles) {
         this.spaces = new ArrayList<Space>();
         generateSpaces(numSpaces, numVehicles);
@@ -18,25 +19,13 @@ public class FairManager {
 
     private void generateSpaces(int numSpaces, int numVehicles) {
         int vehicleCounter = 0;
-        if(numVehicles <= numSpaces *2) {
+        if(numVehicles >= numSpaces ) {
             for (int i = 0; i < numSpaces; i++) {
                 if(vehicleCounter > numVehicles) break;
-
                 ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
                 vehicleList.add(generateRandomVehicle());
                 vehicleCounter++;
                 this.spaces.add(new Space(vehicleList));
-
-            }
-            if (vehicleCounter < numVehicles) {
-                int indexSpace = 0;
-                while (vehicleCounter < numVehicles) {
-                    Space actualSpace = this.spaces.get(indexSpace);
-                    Vehicle actualVehicle = actualSpace.vehicles.get(0);
-                    this.spaces.set(indexSpace, actualSpace);
-                    vehicleCounter++;
-                    indexSpace++;
-                }
             }
         } else {
             System.out.println("La feria indicada no se puede crear");
@@ -55,13 +44,13 @@ public class FairManager {
         int spaceNumber = 0;
         while (iterator.hasNext()) {
             Space actualSpace = iterator.next();
-            System.out.println("**** Space -> " + spaceNumber + " ****");
+            System.out.println("******* Espacio " + spaceNumber + " *********");
             Iterator<Vehicle> vehicleIterator = actualSpace.vehicles.iterator();
             while (vehicleIterator.hasNext()) {
                 Vehicle actualVehicle = vehicleIterator.next();
                 System.out.println(actualVehicle);
             }
-            System.out.println("---------------");
+            System.out.println("-----------------------------");
             spaceNumber++;
         }
     }
